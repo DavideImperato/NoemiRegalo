@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Buon 30° Compleanno Noemi! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Palatino', serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #ffafbd 50%, #c9ffbf 75%, #ffecd2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f0a;
+            opacity: 0;
+            animation: fall 8s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff1493;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease-out;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gift-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-container:hover {
+            transform: scale(1.05);
+        }
+
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            animation: swing 2s ease-in-out infinite;
+            transform-origin: center top;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .gift-ribbon-v {
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to right, #fff 0%, #ffc0cb 100%);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .gift-ribbon-h {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to bottom, #fff 0%, #ffc0cb 100%);
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 5px;
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 60px;
+        }
+
+        .bow-left, .bow-right {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #ffc0cb;
+            border-radius: 50% 50% 0 50%;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        .bow-left {
+            left: 0;
+            transform: rotate(-45deg);
+        }
+
+        .bow-right {
+            right: 0;
+            transform: rotate(45deg);
+        }
+
+        .bow-center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 3px 10px rgba(255, 20, 147, 0.4);
+        }
+
+        .surprise-message {
+            font-size: 2.5rem;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 600;
+        }
+
+        .surprise-message.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .video-container {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+            margin-top: 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        video {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .gift-box {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gift-ribbon-v {
+                width: 25px;
+            }
+
+            .gift-ribbon-h {
+                height: 25px;
+            }
+
+            .gift-bow {
+                width: 60px;
+                height: 45px;
+                top: -25px;
+            }
+
+            .bow-left, .bow-right {
+                width: 30px;
+                height: 30px;
+            }
+
+            .surprise-message {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .gift-box {
+                width: 120px;
+                height: 120px;
+            }
+
+            .surprise-message {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Buon 30° Compleanno Noemi! 🎂</h1>
+        
+        <div class="gift-container" id="giftContainer">
+            <div class="gift-box">
+                <div class="gift-ribbon-v"></div>
+                <div class="gift-ribbon-h"></div>
+                <div class="gift-bow">
+                    <div class="bow-left"></div>
+                    <div class="bow-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="surprise-message" id="surpriseMessage">
+            💖 Sorpresa per te, Noemi! 💖
+        </div>
+
+        <div class="video-container" id="videoContainer">
+            <video id="birthdayVideo" controls>
+                <source src="video.mp4" type="video/mp4">
+                Il tuo browser non supporta il tag video.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const giftContainer = document.getElementById('giftContainer');
+        const surpriseMessage = document.getElementById('surpriseMessage');
+        const videoContainer = document.getElementById('videoContainer');
+        const birthdayVideo = document.getElementById('birthdayVideo');
+
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ffc0cb', '#ffb6c1', '#ff1493', '#db7093', '#c71585'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 8 + 's';
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                document.body.appendChild(confetti);
+            }
+        }
+
+        createConfetti();
+
+        giftContainer.addEventListener('click', function() {
+            giftContainer.style.transition = 'all 0.6s ease';
+            giftContainer.style.transform = 'scale(0) rotate(180deg)';
+            giftContainer.style.opacity = '0';
+
+            setTimeout(() => {
+                giftContainer.classList.add('hidden');
+                surpriseMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    videoContainer.classList.add('show');
+                    birthdayVideo.play();
+                }, 600);
+            }, 600);
+        });
+
+        birthdayVideo.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
